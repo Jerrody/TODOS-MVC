@@ -1,0 +1,22 @@
+﻿@model TodoViewModel
+@{
+	ViewData["Title"] = "Todo";
+}
+
+<form method="post" asp-controller="Todo" asp-action="AddTodo">
+	<h5>Title</h5>
+	<input type="text" name="title" required />
+	<br />
+	<h5>Content</h5>
+	<input type="text" name="content" required />
+	<br />
+	<input type="submit" value="Create" />
+</form>
+
+<h1>Todos:</h1>
+@foreach (var todo in Model.Todos)
+{
+	<h1>@todo.Title</h1>
+	<h1>@todo.Content</h1>
+	<h1>@(todo.IsCompleted ? "Completed" : "In Progress")</h1>
+}
